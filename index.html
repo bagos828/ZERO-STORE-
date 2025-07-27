@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran DANA</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .dana-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a0e3;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            word-break: break-all;
+        }
+        .instructions {
+            text-align: left;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+        .copy-btn {
+            background-color: #00a0e3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #0088c6;
+        }
+        .success-message {
+            color: #4CAF50;
+            font-weight: bold;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA Logo" class="logo">
+        <h1>Pembayaran via DANA</h1>
+        <p>Silahkan lakukan pembayaran ke nomor DANA berikut:</p>
+        
+        <div class="dana-number" id="danaNumber">085606123943</div>
+        
+        <button class="copy-btn" onclick="copyToClipboard()">Salin Nomor</button>
+        <div class="success-message" id="successMessage">Nomor berhasil disalin!</div>
+        
+        <div class="instructions">
+            <h3>Cara Pembayaran:</h3>
+            <ol>
+                <li>Buka aplikasi DANA di smartphone Anda</li>
+                <li>Pilih menu "Kirim" atau "Bayar"</li>
+                <li>Masukkan nomor DANA di atas</li>
+                <li>Masukkan nominal pembayaran</li>
+                <li>Ikuti instruksi selanjutnya untuk menyelesaikan pembayaran</li>
+            </ol>
+            
+            <p><strong>Setelah melakukan pembayaran, harap konfirmasi dengan mengirimkan bukti transfer.</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const danaNumber = document.getElementById('danaNumber');
+            const successMessage = document.getElementById('successMessage');
+            
+            navigator.clipboard.writeText(danaNumber.innerText)
+                .then(() => {
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin teks: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
